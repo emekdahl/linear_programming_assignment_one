@@ -1,0 +1,30 @@
+Requirement already satisfied: pulp in /usr/local/python/3.12.1/lib/python3.12/site-packages (2.9.0)
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /usr/local/python/3.12.1/lib/python3.12/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/5dfccebdb8eb45a48c1d6f8aba7a6d4e-pulp.mps -timeMode elapsed -branch -printingOptions all -solution /tmp/5dfccebdb8eb45a48c1d6f8aba7a6d4e-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 11 COLUMNS
+At line 37 RHS
+At line 44 BOUNDS
+At line 50 ENDATA
+Problem MODEL has 6 rows, 5 columns and 20 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+Presolve 6 (0) rows, 5 (0) columns and 20 (0) elements
+0  Obj 7.814 Primal inf 977.73273 (5)
+2  Obj 247.34689
+Optimal - objective value 247.34689
+Optimal objective 247.3468889 - 2 iterations time 0.002
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
+
+Status: Optimal
+Applesauce = 1.0
+...
+Frozen_Stir_Fry_Veg = 1.0
+Rice = 12.962963
+Salmon = 1.0
+Total cost of diet: $247.35

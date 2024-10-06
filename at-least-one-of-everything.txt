@@ -1,0 +1,33 @@
+!pip install pulp
+
+import pulp
+
+diet_problem = pulp.LpProblem("Weekly_Diet_Cost_Minimization", pulp.LpMinimize)
+
+x1 = pulp.LpVariable('Applesauce', lowBound=1, cat='Continuous')
+x2 = pulp.LpVariable('Salmon', lowBound=1, cat='Continuous')
+x3 = pulp.LpVariable('Eggs', lowBound=1, cat='Continuous')
+x4 = pulp.LpVariable('Rice', lowBound=1, cat='Continuous')
+x5 = pulp.LpVariable('Frozen_Stir_Fry_Veg', lowBound=1, cat='Continuous')
+
+diet_problem += (1.598 * x1 + 4.495 * x2 + 0.783 * x3 + 0.3 * x4 + 0.638 * x5, "Total Cost")
+
+diet_problem += (450 * x2 + 70 * x3 + 20 * x5 <= 35000, "Max Sodium")
+
+diet_problem += (160 * x1 + 120 * x2 + 70 * x3 + 40 * x4 + 25 * x5 >= 14000, "Min Energy")
+
+diet_problem += (3 * x1 + 12 * x2 + 6 * x3 + 0 * x4 + 1 * x5 >= 350, "Min Protein")
+
+diet_problem += (30 * x2 + 0.6 * x3 + 0 * x1 + 0 * x4 + 0 * x5 >= 140, "Min Vitamin D")
+
+diet_problem += (10 * x2 + 30 * x3 + 0 * x1 + 0 * x4 + 20 * x5 >= 9100, "Min Calcium")
+
+diet_problem += (0.4 * x3 + 0.36 * x4 + 0.4 * x5 >= 126, "Min Iron")
+
+diet_problem.solve()
+
+print("Status:", pulp.LpStatus[diet_problem.status])
+for var in diet_problem.variables():
+    print(f"{var.name} = {var.varValue}")
+
+print(f"Total cost of diet: ${pulp.value(diet_problem.objective):.2f}")
